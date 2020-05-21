@@ -11,7 +11,7 @@ public class AppealControl {
 	
 	
 	public void insertAppeal(Appeal a) {
-		String query = "INSERT INTO customer (`name`, `region`, `monthly_price`)" + " VALUES ('" +  a.getName() + "','" + a.getRegion() + "'," +  a.getPrice() + ")";
+		String query = "INSERT INTO appeals (`name`, `region`, `monthly_price`)" + " VALUES ('" +  a.getName() + "','" + a.getRegion() + "'," +  a.getPrice() + ")";
 		DB.exUpdate(query);
 		
 	}
