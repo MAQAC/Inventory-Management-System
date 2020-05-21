@@ -47,7 +47,7 @@ public class AppealControl {
 		}
 	
 	//return price 
-	public BigDecimal appPrice(int id) {
+	public BigDecimal appPrice(Appeal a, int id) {
 		String query = "SELECT monthly_price FROM appeals WHERE appealID = " + id;
 		ResultSet rs = DB.exQuery(query);
 		
@@ -55,6 +55,7 @@ public class AppealControl {
 		try {
 			while(rs.next()) {
 				 priceret = rs.getBigDecimal("monthly_price");
+				 a.setPrice(priceret);
 				
 			}
 		} catch (SQLException e) {

@@ -10,6 +10,7 @@ import com.qa.ims.persistance.DB;
 import com.qa.ims.persistance.Pledge;
 
 import input.UserInput;
+import logic.BusinessLogic;
 
 public class Ivm {
 	
@@ -20,7 +21,7 @@ public class Ivm {
 	Pledge p = new Pledge();
 	PledgeControl pc = new PledgeControl();
 	UserInput ui = new UserInput();
-	
+	BusinessLogic bl = new BusinessLogic();
 	void showMenu() throws ParseException {
 		
 		String option = null;
@@ -69,7 +70,8 @@ public class Ivm {
 				int id =ui.inputAppeal();
 				int custid = ui.RetId();
 				String date = ui.inputDate();
-				BigDecimal price = ac.appPrice(id);
+				BigDecimal price = ac.appPrice(a,id);
+				price = bl.totalCost(a,ui.insertQuantity());
 				pc.insertPledge(custid, date, price);
 				showMenu();
 				

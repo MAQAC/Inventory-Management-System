@@ -85,4 +85,10 @@ public class UserInput {
 	return a;
 	}
 	
+	public BigDecimal insertQuantity() {
+		System.out.print("Can you please enter the Quantity you would like?");
+		BigDecimal quantity = inputDecimal();
+		return quantity;
+	}
+	
 }
