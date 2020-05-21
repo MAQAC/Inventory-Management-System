@@ -1,8 +1,10 @@
 package input;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Scanner;
 
+import com.qa.ims.persistance.Appeal;
 import com.qa.ims.persistance.Customer;
 
 public class UserInput {
@@ -12,6 +14,13 @@ public class UserInput {
 	
 	public String input() {
 		return sc.nextLine();	} //cast to appropriate variable
+	
+	static BigDecimal inputDecimal() {
+		BigDecimal input;
+		input = sc.nextBigDecimal();
+		sc.nextLine();
+		return input;
+	}
 	
 	static int inputInt() {
 		int input;
@@ -63,7 +72,17 @@ public class UserInput {
 		String date = d;
 		return date;
 	}
-
-	
+	public Appeal inputAppeal(Appeal a) {
+	System.out.print("Can you please enter Appeal name?");
+	String name = input(); 
+	a.setName(name);
+	System.out.print("Can you please the region of project?");
+	String region = input();
+	a.setRegion(region);
+	System.out.print("Can you please provide the price?");
+	BigDecimal price = inputDecimal();
+	a.setPrice(price);
+	return a;
+	}
 	
 }

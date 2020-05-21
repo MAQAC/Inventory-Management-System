@@ -9,6 +9,13 @@ import com.qa.ims.persistance.DB;
 
 public class AppealControl {
 	
+	
+	public void insertAppeal(Appeal a) {
+		String query = "INSERT INTO customer (`name`, `region`, `monthly_price`)" + " VALUES ('" +  a.getName() + "','" + a.getRegion() + "'," +  a.getPrice() + ")";
+		DB.exUpdate(query);
+		
+	}
+	
 	public void queryAppeal(Appeal a) {
 		
 		//String query = "SELECT * FROM appeals WHERE appealID = " + id;

@@ -82,9 +82,9 @@ public class CustomerControl {
 	}
 	
 	//Update Customer
-		public void updateCustomer(Customer a, int id) throws SQLException {
+		public void updateCustomer(Customer a, int id) {
 			String query = "UPDATE customer SET `first_name` = '" + a.getFname() + "', last_name = '" + a.getLname() + "', address1 = '" + a.getAddress1() 
-					+  "' city = '" + a.getCity() + "' email = '" + a.getEmail() + "' WHERE customer_ID = " + id;
+					+  "', city = '" + a.getCity() + "', email = '" + a.getEmail() + "' WHERE customerID = " + id;
 			DB.exUpdate(query);
 			}
 		

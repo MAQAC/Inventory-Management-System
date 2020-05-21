@@ -38,8 +38,9 @@ public class Ivm {
 		System.out.print("\n");
 		System.out.print("D. Update Details");
 		System.out.print("\n");
-		System.out.print("E. Exit");
-		
+		System.out.print("E. Add Appeal");
+		System.out.print("\n");
+		System.out.print("F. Exit");
 		do {
 			
 			System.out.print("\n");
@@ -52,18 +53,18 @@ public class Ivm {
 			
 			System.out.print("\n");
 			
-			
+			DB.connect();
 			switch(option) {
 			
 			case "A":
-				DB.connect();
+				
 				custcon.insertCustomer(ui.inputCust(cust));
 				custcon.showID(cust);
 				showMenu();
 				break;
 				
 			case "B":
-				DB.connect();
+				
 				ac.queryAppeal(a);
 				int id =ui.inputAppeal();
 				int custid = ui.RetId();
@@ -75,19 +76,27 @@ public class Ivm {
 				break;
 				
 			case "C": 
-				DB.connect();
+				
 				int custid1 = ui.RetId();
 				pc.queryPledge(p, custid1);
 				
 				break;
 				
 			case "D":
+				
 				id = ui.RetId();
-				custid1 = ui.inputCust(cust);
-				custcon.updateCustomer(cust, custid1);
+				cust = ui.inputCust(cust);
+				custcon.updateCustomer(cust, id);
+				showMenu();
 				break;
 			
 			case "E":
+				a = ui.inputAppeal(a);
+				ac.insertAppeal(a);
+				showMenu();
+				break;
+				
+			case "F":
 				break;
 				
 			default:
@@ -95,7 +104,7 @@ public class Ivm {
 				break;				
 			}
 			
-			} while(option != "E");
+			} while(option != "F");
 		scanner.close();
 		System.out.println("Thank you for using our services");
 	}
