@@ -1,8 +1,10 @@
 package com.qa.ima.controller;
 
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 
 import com.qa.ims.persistance.Customer;
 import com.qa.ims.persistance.DB;
@@ -15,6 +17,8 @@ public class CustomerControl {
 	CustomerControl() {
 	
 	}
+	
+	
 	
 	//insert a customer
 	public void insertCustomer(Customer a) {
@@ -29,6 +33,42 @@ public class CustomerControl {
 	public void showCustomer(Customer a, int id) {
 		
 		String query = "SELECT * FROM customer WHERE customerID = " + id;
+		
+		ResultSet rs = DB.exQuery(query);
+		
+		try {
+			while(rs.next()) {
+				
+//				int customerIDtemp = 0;
+				String fnameTemp = null;
+				String lnameTemp = null;
+				String address1Temp = null;
+				String cityTemp = null;
+				String emailTemp = null;
+				
+//			customerIDtemp = rs.getInt("appealID");
+//			a.setId(customerIDtemp);
+			fnameTemp = rs.getString("first_name");
+			a.setFname(fnameTemp);
+			lnameTemp = rs.getString("last_name");
+			a.setLname(lnameTemp);
+			address1Temp = rs.getString("address1");
+			a.setAddress1(address1Temp);
+			cityTemp = rs.getString("city");
+			a.setCity(cityTemp);
+			emailTemp = rs.getString("email");
+			a.setEmail(emailTemp);
+			System.out.println(a);
+			
+			} 
+		} catch (SQLException e) {
+			e.printStackTrace();
+			}	
+		}
+	
+public void showAllCustomer(Customer a) {
+		
+		String query = "SELECT * FROM customer WHERE customerID"; 
 		
 		ResultSet rs = DB.exQuery(query);
 		

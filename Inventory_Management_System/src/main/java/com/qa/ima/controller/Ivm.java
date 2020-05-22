@@ -22,7 +22,7 @@ public class Ivm {
 	PledgeControl pc = new PledgeControl();
 	UserInput ui = new UserInput();
 	BusinessLogic bl = new BusinessLogic();
-	void showMenu() throws ParseException {
+	public void showMenu() throws ParseException {
 		
 		String option = null;
 		Scanner scanner = new Scanner(System.in);
@@ -65,15 +65,38 @@ public class Ivm {
 				break;
 				
 			case "B":
-				
 				ac.queryAppeal(a);
-				int id =ui.inputAppeal();
-				int custid = ui.RetId();
-				String date = ui.inputDate();
-				BigDecimal price = ac.appPrice(a,id);
-				price = bl.totalCost(a,ui.insertQuantity());
-				pc.insertPledge(custid, date, price);
-				showMenu();
+				System.out.print("========================================================");
+				System.out.print("\n");
+				System.out.print("A. Place an Order");
+				System.out.print("\n");
+				System.out.print("B. Take me back to Menu");
+				System.out.print("\n");
+				System.out.print("========================================================");
+				System.out.print("\n");
+				System.out.print("Enter an option: ");	
+				String custoption = ui.input();			
+				
+				switch(custoption) {
+				case "A":
+					ac.queryAppeal(a);
+					int id =ui.inputAppeal();
+					int custid = ui.RetId();
+					String date = ui.inputDate();
+					BigDecimal price = ac.appPrice(a,id);
+					price = bl.totalCost(a,ui.insertQuantity());
+					pc.insertPledge(custid, date, price);
+					showMenu();
+					break;
+				case "B":	
+					showMenu();
+					break;
+				default:
+					System.out.print("Please enter a valid option!");
+					
+				}
+				
+
 				
 				break;
 				
@@ -86,7 +109,7 @@ public class Ivm {
 				
 			case "D":
 				
-				id = ui.RetId();
+			int	id = ui.RetId();
 				cust = ui.inputCust(cust);
 				custcon.updateCustomer(cust, id);
 				showMenu();
@@ -106,7 +129,7 @@ public class Ivm {
 				break;				
 			}
 			
-			} while(option != "F");
+			} while(option == "F");
 		scanner.close();
 		System.out.println("Thank you for using our services");
 	}

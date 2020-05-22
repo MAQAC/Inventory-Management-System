@@ -16,8 +16,8 @@ public class DB {
 	public static final String DB_URL = "jdbc:mysql://localhost/charity?serverTimezone=UTC";
 //	static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
 //com.mysql.jdbc.Driver
-	private static Connection conn = null;
-	private static Statement stmt = null;
+	public static Connection conn = null;
+	public static Statement stmt = null;
 	
 	
 	

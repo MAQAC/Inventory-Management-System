@@ -3,7 +3,6 @@ package input;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Scanner;
-
 import com.qa.ims.persistance.Appeal;
 import com.qa.ims.persistance.Customer;
 
@@ -91,4 +90,12 @@ public class UserInput {
 		return quantity;
 	}
 	
+	public String confirmation() {
+		System.out.print("Can you please confirm if you would like to continue?");
+		System.out.print("A: Confirm");
+		System.out.print("B: Go back");
+		System.out.print("Enter option here: ");
+		String option = input();
+		return option;
+	}
 }
